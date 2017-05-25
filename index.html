@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.min.css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+    <script type="text/javascript" src="js/script.min.js"></script>
 
     <title>GitHub User Data</title>
 </head>
@@ -25,17 +30,93 @@
         </nav>
         <div id="mainContainer" class="main-container">
             <div id="statusRequest" class="status-request">
-                <span id="lblStatusReq">Procesando...</span>
+                <span id="lblStatusReq">Please wait...</span>
                 <div class="progress">
                     <div class="indeterminate"></div>
                 </div>
             </div>
 
-            <div id="resultContainer"></div>
+            <div id="statusFail" class="status-fail flow-text"></div>
+
+            <div id="resultContainer" class="result-container">
+
+                <div class="row">
+                    <div class="col s5 m3 l3">
+                        <div class="card">
+                            <div class="card-image">
+                                <img id="imgUser" src="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s7 m9 l9">
+                        <h1 class="flow-text main-text-1" id="lblUserName"></h1>
+                        <span class="flow-text"><a  id="aUserGithubPage" href="#"></a></span>
+                    </div>
+
+                    <div class="col s12 m12 l12">
+                        <div id="pUserBio" class="flow-text"></div>
+                    </div>
+                </div>
+
+                <ul id="tbContent" class="tabs">
+                    <li class="tab col s3"><a class="active" href="#contentGeneral">Overview</a></li>
+                    <li class="tab col s3"><a href="#contentRepos">Repositories (<span id="cantRepos"></span>)</a></li>
+                </ul>
+                <div id="contentGeneral" class="col s12 content-tab active">
+                    <div class="row">
+                        <div class="col s4 l3 lbl-column-1">ID:</div>
+                        <div id="lblID" class="col s8 l9 lbl-column-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4 l3 lbl-column-1">Company:</div>
+                        <div id="lblCompany" class="col s8 l9 lbl-column-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4 l3 lbl-column-1">e-mail:</div>
+                        <div class="col s8 l9 lbl-column-2"><a id="lblEmail" href="mailto:"></a></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4 l3 lbl-column-1">Blog:</div>
+                        <div class="col s8 l9 lbl-column-2"><a id="lblBlog" href="#"></a></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4 l3 lbl-column-1">Location:</div>
+                        <div id="lblLocation" class="col s8 l9 lbl-column-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4 l3 lbl-column-1">Followers:</div>
+                        <div id="lblFollowers" class="col s8 l9 lbl-column-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col s4 l3 lbl-column-1">Following:</div>
+                        <div id="lblFollowing" class="col s8 l9 lbl-column-2"></div>
+                    </div>
+                </div>
+                <div id="contentRepos" class="col s12 content-tab">
+                    <div class="row">
+                        <div class="col s12">
+                            <ul id="ulReposCollection" class="collection">
+                            </ul>
+                        </div>
+
+                        <!-- <div class="col s12">
+                            <ul class="pagination">
+                                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                                <li class="waves-effect active cyan darken-3"><a href="#!">1</a></li>
+                                <li class="waves-effect"><a href="#!">2</a></li>
+                                <li class="waves-effect"><a href="#!">3</a></li>
+                                <li class="waves-effect"><a href="#!">4</a></li>
+                                <li class="waves-effect"><a href="#!">5</a></li>
+                                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                            </ul>
+                        </div> -->
+
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/script.min.js"></script>
 </body>
 </html>
