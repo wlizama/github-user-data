@@ -12,14 +12,14 @@
 
     function init() {
         document.getElementById("btnClearInput").onclick = clearSearch;
-        
+
         txtSearch = document.getElementById("txtSearch");
         lblStatusReq = document.getElementById("lblStatusReq");
         statusRequest = document.getElementById("statusRequest");
         resultContainer = document.getElementById("resultContainer");
         statusFail = document.getElementById("statusFail");
         ulReposCollection = document.getElementById("ulReposCollection");
-        
+
 
         txtSearch.onkeydown = searchUser;
     }
@@ -51,7 +51,7 @@
                         statusFail.style.display = "none";
                         resultContainer.style.display = "none";
                         lblStatusReq.innerHTML = "Please wait...";
-                        
+
                         if(xhr.readyState == 4 && xhr.status == 200){
 
                             lblStatusReq.innerHTML = "Data User OK!";
@@ -60,7 +60,7 @@
                             searchUserRepos(userName);
                         }
                         else if(xhr.status == 404){ // NOT FOUND
-                            
+
                             statusRequest.style.display = "none";
 
                             statusFail.innerHTML =
@@ -94,7 +94,7 @@
             document.getElementById("lblID").innerHTML = rpt.id;
             document.getElementById("lblCompany").innerHTML = rpt.company ? rpt.company : "";
             document.getElementById("lblEmail").innerHTML = rpt.email ? rpt.email : "";
-            document.getElementById("lblEmail").href = "mailto:" + rpt.email ? rpt.email : "";
+            document.getElementById("lblEmail").href = "mailto:" + (rpt.email ? rpt.email : "");
             document.getElementById("lblBlog").href = rpt.blog ? rpt.blog : "";
             document.getElementById("lblBlog").innerHTML = rpt.blog ? rpt.blog : "";
             document.getElementById("lblLocation").innerHTML = rpt.location ? rpt.location : "";
@@ -102,7 +102,7 @@
             document.getElementById("lblFollowing").innerHTML = rpt.following;
 
             document.getElementById("cantRepos").innerHTML = rpt.public_repos;
-            
+
         }
         catch(e){
             alert("Error on show data.\nName: " + e.name + "\nMessage: " + e.message);
@@ -121,7 +121,7 @@
                     statusFail.style.display = "none";
                     resultContainer.style.display = "none";
                     lblStatusReq.innerHTML = "Getting Repositories List...";
-                    
+
                     if(xhr.readyState == 4 && xhr.status == 200){
 
                         lblStatusReq.innerHTML = "Sucess!";
@@ -135,7 +135,7 @@
                 xhr.open('GET', url, true);
                 xhr.send(null);
             }
-            
+
         }
         catch(e){
             if (statusRequest)
@@ -151,13 +151,13 @@
                 var htmlRepos = "";
                 for (var i = 0; i < arrRepos.length; i++) {
                     var clsNameTypeRepo = arrRepos[i].fork ? "github-fork": "github-repo";
-                    var description = arrRepos[i].description == null ? "": arrRepos[i].description; 
+                    var description = arrRepos[i].description == null ? "": arrRepos[i].description;
                     var language = arrRepos[i].language == null ? "": arrRepos[i].language;
                     var arrfullName = arrRepos[i].full_name.split("/");
                     var fullName = arrfullName[0] + "/<b>" + arrfullName[1] + "</b>";
 
 
-                    htmlRepos += 
+                    htmlRepos +=
                     "<li class=\"collection-item avatar\">" +
                         "<i class=\"circle white " + clsNameTypeRepo + "\">&nbsp;</i>" +
                         "<div class=\"repo-title\">" +
@@ -172,12 +172,12 @@
 
             }
             else{
-                ulReposCollection.innerHTML = "<div class=\"no-repos\">No public repositories</div>"
+                ulReposCollection.innerHTML = "<div class=\"no-repos\">No public repositories</div>";
             }
         }
         catch(e){
             alert("Error on searching repositories.\nName: " + e.name + "\nMessage: " + e.message);
-        }   
+        }
     }
 
 }());
