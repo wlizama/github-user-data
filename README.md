@@ -4,4 +4,4 @@ Esta aplicación consume la [API de Github](https://api.github.com) para visuali
 
 [Materialize framework](http://materializecss.com/) sirvió como base para el diseño.
 
-:fast_forward: [Preview](https://wlizama.github.io/github-user-data/)
+:eyes: [Preview](https://wlizama.github.io/github-user-data/)
