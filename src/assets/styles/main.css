@@ -2,53 +2,7 @@
     [1] : Materialize icon error solution;
  */
 
- /* [1] */
-@font-face {
-    font-family: 'Material Icons'; 
-    src: url(../fonts/Material-Design-Icons.woff2) format('woff2');
-}
-.material-icons {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal; 
-    -webkit-font-feature-settings: 'liga'; 
-}
-
-*,*:after, *:before{
-    box-sizing: border-box;
-}
-
-html,body{
-    height: 100%;
-    background-color: transparent;
-    overflow: auto;
-}
-html{
-    background-image: url(../img/textura_ln1.png);
-    background-attachment: fixed;
-}
-body{
-    font-size: 16px;
-    background-image: url(../img/github.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: 15%;
-}
-.main{
-    min-height: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    max-width: 50em;
-}
-.main-search{
-    max-width: inherit;
-    display: inline-block;
-    /*position: fixed;*/
-}
+ 
 .main-container{
     max-width: 50em;
     width: 100%;
@@ -98,11 +52,11 @@ body{
     padding-left: 0.2em;
 }
 .github-repo{
-    background: url(../img/github_sprite.png) 9px 10px no-repeat;
+    background: url(../images/github_sprite.png) 9px 10px no-repeat;
     background-size: 23px 57px;
 }
 .github-fork{
-    background: url(../img/github_sprite.png) 8px -28px no-repeat;
+    background: url(../images/github_sprite.png) 8px -28px no-repeat;
     background-size: 25px 57px;
 }
 .repo-title{
