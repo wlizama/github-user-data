@@ -6,7 +6,7 @@ module.exports = {
     entry: './src/main.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/dist/',
+        publicPath: './dist/',
         filename: 'js/[name].js',
     },
     module: {
@@ -41,6 +41,15 @@ module.exports = {
                 options: {
                     name: '[name].[ext]',
                     outputPath: 'images/'
+                }
+            },
+            {
+                // loader para fuentes
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'fonts/'
                 }
             }
         ]

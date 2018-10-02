@@ -10,7 +10,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].js', // .[hash:8]
-        publicPath: path.resolve(__dirname, 'dist') + "/",
+        publicPath: './dist/',
         chunkFilename: 'js/[id].js', // .[chunkhash:8]
     },
     module: {
@@ -45,6 +45,15 @@ module.exports = {
                 options: {
                     name: '[name].[ext]',
                     outputPath: 'images/'
+                }
+            },
+            {
+                // loader para fuentes
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'fonts/'
                 }
             }
         ]
