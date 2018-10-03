@@ -1,17 +1,23 @@
 <template>
     <div class="body-container">
-        <slot></slot>
+        <div v-if="show_content">
+            <slot></slot>
+        </div>
     </div>
 </template>
 
 <script>
     export default {
-        name : "bodyContainer"    
+        name : "bodyContainer",
+        props : {
+            show_content: Boolean,
+            default: true
+        }
     }
 </script>
 
 <style>
-    .body-container{
+    .body-container {
         max-width: 50em;
         width: 100%;
         display: inline-block;

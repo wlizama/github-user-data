@@ -1,9 +1,9 @@
 <template>
     <section class="main">
-        <InputSearch />
-        <BodyContainer>
-            <StatusRequest />
-            <ResultContainer>
+        <InputSearch :input_props="input_props"/>
+        <BodyContainer :show_content="show_content">
+            <StatusRequest v-if="show_status_req" :status_req_props="status_req_props" />
+            <ResultContainer v-else>
                 <UserRow />
                 <UserTabContent />
             </ResultContainer>
@@ -16,8 +16,10 @@
     import "./assets/styles/common.css"
     import 'materialize-css/dist/css/materialize.min.css';
 
-    // import ghAPI from "./api"
-    import "materialize-css"
+    //# JS imports
+    // import "jquery"
+    // import "materialize-css"
+    import ghAPI from "./api"
 
     //# Components imports
     import InputSearch from "./components/InputSearch.vue"
@@ -30,15 +32,44 @@
 
     export default {
         name : "mainApp",
+        data() {
+            return {
+                input_props: {
+                    username : "",
+                    doKeyup: this.searchUser,
+                    doClickClose : this.clearSearch
+                },
+                status_req_props : {
+                    type: ""
+                },
+                show_status_req: false,
+                show_content: false,
+                user_data: {},
+            }
+        },
         methods : {
-            // micl() {
-            //     ghAPI.getUser("wlizama", (err, data) => {
-            //         if (!err)
-            //             console.log(data);
-            //         else
-            //             console.log(err);
-            //     })
-            // }
+            searchUser() {
+                this.show_content = true
+                this.show_status_req = true
+                this.status_req_props.type = "loading"
+
+                ghAPI.getUser(this.input_props.username, (err, data) => {
+                    if (!err){
+                        this.user_data = data;
+                        this.show_status_req = false
+                    }
+                    else {
+                        this.show_status_req = true
+                        this.status_req_props.type = "error"
+                    }
+                })
+            },
+            clearSearch() {
+                this.show_status_req = false
+                this.show_content = false
+                this.input_props.username = ""
+                this.user_data = {}
+            }
         },
         components : {
             InputSearch,

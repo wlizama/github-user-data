@@ -18,25 +18,8 @@
 .status-fail{
     display: none;
 }
-.main-text-1,
-.lbl-column-1{
-    font-weight: bold;
-}
-.lbl-column-2{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.content-tab{
-    border: 1px solid #efefef;
-    background-color: rgba(228, 228, 228, 0.06);
-}
-.content-tab > .row:first-child{
-    padding-top: 1em;
-}
-.content-tab > .row:last-child{
-    padding-bottom: 1em;
-}
+
+
 .stargazers-count{
     vertical-align: super;
     padding-left: 0.2em;
