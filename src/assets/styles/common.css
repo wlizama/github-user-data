@@ -30,3 +30,13 @@ body{
     font-style: normal; 
     -webkit-font-feature-settings: 'liga'; 
 }
+
+.main-text-1,
+.lbl-column-1{
+    font-weight: bold;
+}
+.lbl-column-2{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -1,16 +1,32 @@
 <template>
     <section class="main">
         <InputSearch />
+        <BodyContainer>
+            <StatusRequest />
+            <ResultContainer>
+                <UserRow />
+                <UserTabContent />
+            </ResultContainer>
+        </BodyContainer>
     </section>
 </template>
 
 <script>
+    //# CSS imports
     import "./assets/styles/common.css"
     import 'materialize-css/dist/css/materialize.min.css';
 
     // import ghAPI from "./api"
+    import "materialize-css"
 
+    //# Components imports
     import InputSearch from "./components/InputSearch.vue"
+    import BodyContainer from "./components/BodyContainer.vue"
+    import StatusRequest from "./components/StatusRequest.vue"
+    import ResultContainer from "./components/ResultContainer.vue"
+    import UserRow from "./components/UserRow.vue"
+    import UserTabContent from "./components/UserTabContent.vue"
+    
 
     export default {
         name : "mainApp",
@@ -25,7 +41,12 @@
             // }
         },
         components : {
-            InputSearch
+            InputSearch,
+            BodyContainer,
+            StatusRequest,
+            ResultContainer,
+            UserRow,
+            UserTabContent
         }
     }
 </script>
