@@ -1,29 +1,41 @@
 {
-  "name": "github-user-data",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wlizama/github-user-data.git"
-  },
-  "author": "Wilder",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/wlizama/github-user-data/issues"
-  },
-  "homepage": "https://github.com/wlizama/github-user-data#readme",
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-hash-filename": "^1.2.0",
-    "gulp-image": "^4.3.0",
-    "gulp-imagemin": "^4.1.0",
-    "gulp-minify-css": "^1.2.4",
-    "gulp-uglify": "^2.1.2"
-  }
+    "name": "github-user-data",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build:dev": "webpack-dev-server --config ./webpack.dev.config.js --info=false --progress --hot",
+        "build:prod": "webpack --progress --hide-modules"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wlizama/github-user-data.git"
+    },
+    "author": "Wilder",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/wlizama/github-user-data/issues"
+    },
+    "homepage": "https://github.com/wlizama/github-user-data#readme",
+    "dependencies": {
+        "axios": "^0.18.0",
+        "material-design-icons": "^3.0.1",
+        "materialize-css": "^1.0.0",
+        "vue": "^2.5.17"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.1.2",
+        "babel-loader": "^8.0.4",
+        "babel-preset-env": "^1.7.0",
+        "clean-webpack-plugin": "^0.1.19",
+        "css-loader": "^1.0.0",
+        "extract-text-webpack-plugin": "^4.0.0-beta.0",
+        "file-loader": "^2.0.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.1",
+        "vue-loader": "^15.4.2",
+        "vue-template-compiler": "^2.5.17",
+        "webpack": "^4.20.2",
+        "webpack-cli": "^3.1.2",
+        "webpack-dev-server": "^3.1.9"
+    }
 }
