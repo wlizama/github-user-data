@@ -4,7 +4,7 @@
         <BodyContainer :show_content="show_content">
             <StatusRequest v-if="show_status_req" :status_req_props="status_req_props" />
             <ResultContainer v-else>
-                <UserRow />
+                <UserRow :user_row_props="user_data" />
                 <UserTabContent />
             </ResultContainer>
         </BodyContainer>
@@ -59,6 +59,7 @@
                         this.show_status_req = false
                     }
                     else {
+                        this.user_data = {}
                         this.show_status_req = true
                         this.status_req_props.type = "error"
                     }
