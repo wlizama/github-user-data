@@ -49,21 +49,25 @@
         },
         methods : {
             searchUser() {
-                this.show_content = true
-                this.show_status_req = true
-                this.status_req_props.type = "loading"
+                let username = this.input_props.username.trim()
 
-                ghAPI.getUser(this.input_props.username, (err, data) => {
-                    if (!err){
-                        this.user_data = data;
-                        this.show_status_req = false
-                    }
-                    else {
-                        this.user_data = {}
-                        this.show_status_req = true
-                        this.status_req_props.type = "error"
-                    }
-                })
+                if(username !== "") {
+                    this.show_content = true
+                    this.show_status_req = true
+                    this.status_req_props.type = "loading"
+    
+                    ghAPI.getUser(username, (err, data) => {
+                        if (!err){
+                            this.user_data = data;
+                            this.show_status_req = false
+                        }
+                        else {
+                            this.user_data = {}
+                            this.show_status_req = true
+                            this.status_req_props.type = "error"
+                        }
+                    })
+                }
             },
             clearSearch() {
                 this.show_status_req = false
