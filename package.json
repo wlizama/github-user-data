@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build:dev": "webpack-dev-server --config ./webpack.dev.config.js --progress --hot",
+        "build:dev": "webpack-dev-server --config ./webpack.dev.config.js --info=false --progress --hot",
         "build:prod": "webpack --progress --hide-modules"
     },
     "repository": {

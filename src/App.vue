@@ -5,7 +5,7 @@
             <StatusRequest v-if="show_status_req" :status_req_props="status_req_props" />
             <ResultContainer v-else>
                 <UserRow :user_row_props="user_data" />
-                <UserTabContent />
+                <UserTabContent :user_tab_content_props="user_data" />
             </ResultContainer>
         </BodyContainer>
     </section>
