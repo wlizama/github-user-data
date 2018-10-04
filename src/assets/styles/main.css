@@ -1,0 +1,67 @@
+/* 
+    [1] : Materialize icon error solution;
+ */
+
+ 
+
+.status-fail{
+    text-align: center;
+    font-size: 1.2em;
+}
+.status-fail > h1{
+    font-size: 5em;
+    font-weight: bold;
+}
+
+.result-container,
+.status-request,
+.status-fail{
+    display: none;
+}
+
+
+.stargazers-count{
+    vertical-align: super;
+    padding-left: 0.2em;
+}
+.github-repo{
+    background: url(../images/github_sprite.png) 9px 10px no-repeat;
+    background-size: 23px 57px;
+}
+.github-fork{
+    background: url(../images/github_sprite.png) 8px -28px no-repeat;
+    background-size: 25px 57px;
+}
+.repo-title{
+    display: flex;
+    justify-content: space-between;
+}
+.repo-title--label{
+    max-width: 640px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.repo-title--star-count{
+    text-align: right;
+    white-space: nowrap;
+}
+.repo-lang{
+    font-style: italic;
+    font-weight: bold;
+}
+.no-repos{
+    text-align: center;
+    padding: 1em 0;
+    font-size: 1.1em;
+}
+.col{
+    /*border: 1px dotted #CCC;*/
+}
+
+
+@media screen and ( max-width: 640px ){
+    body{
+        background-size: 25%;
+    }
+}
