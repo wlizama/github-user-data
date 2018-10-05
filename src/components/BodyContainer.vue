@@ -1,9 +1,11 @@
 <template>
-    <div class="body-container">
-        <div v-if="show_content">
-            <slot></slot>
-        </div>
-    </div>
+    <v-content>
+        <v-container fluid>
+            <div v-if="show_content">
+                <slot></slot>
+            </div>
+        </v-container>
+    </v-content>
 </template>
 
 <script>

@@ -7,6 +7,7 @@
             append-icon="search"
             label="Github user here ..."
             color="blue-grey"
+            @click:clear="input_props.doClickClose"
             flat
             clearable
             solo

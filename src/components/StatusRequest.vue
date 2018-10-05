@@ -1,11 +1,9 @@
 <template>
     <div>
         <div v-if="status_req_props.type === 'loading'">
-            <div class="status-request">
+            <div>
                 <span>Please wait...</span>
-                <div class="progress">
-                    <div class="indeterminate"></div>
-                </div>
+                <v-progress-linear :indeterminate="true"></v-progress-linear>
             </div>
         </div>
         <div v-if="status_req_props.type === 'error'">

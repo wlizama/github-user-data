@@ -1,24 +1,21 @@
 <template>
     <v-app>
         <InputSearch :input_props="input_props"/>
-        <!-- <BodyContainer :show_content="show_content">
+        <BodyContainer :show_content="show_content">
             <StatusRequest v-if="show_status_req" :status_req_props="status_req_props" />
             <ResultContainer v-else>
                 <UserRow :user_row_props="user_data" />
                 <UserTabContent :user_tab_content_props="user_data" />
             </ResultContainer>
-        </BodyContainer> -->
+        </BodyContainer>
     </v-app>
 </template>
 
 <script>
     //# CSS imports
     import "./assets/styles/common.css"
-    // import 'materialize-css/dist/css/materialize.min.css';
 
     //# JS imports
-    // import "jquery"
-    // import "materialize-css"
     import ghAPI from "./api"
 
     //# Components imports
