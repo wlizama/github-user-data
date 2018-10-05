@@ -4,14 +4,6 @@
 
  
 
-.status-fail{
-    text-align: center;
-    font-size: 1.2em;
-}
-.status-fail > h1{
-    font-size: 5em;
-    font-weight: bold;
-}
 
 .result-container,
 .status-request,
