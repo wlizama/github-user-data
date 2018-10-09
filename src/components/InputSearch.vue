@@ -8,6 +8,7 @@
             label="Github user here ..."
             color="blue-grey"
             @click:clear="input_props.doClickClose"
+            hide-details
             flat
             clearable
             solo
