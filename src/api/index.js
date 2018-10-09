@@ -15,4 +15,11 @@ ghAPI.getUser = function (username, callback) {
         .catch(err => callback(err))
 }
 
+
+ghAPI.getUserRepos = function (username, callback) {
+    axios.get(`${API_URL}/users/${username}/repos`)
+        .then(resp => callback(null, resp.data))
+        .catch(err => callback(err))
+}
+
 export default ghAPI

@@ -1,10 +1,12 @@
 <template>
     <v-content>
-        <v-container fluid>
-            <div v-if="show_content">
-                <slot></slot>
-            </div>
-        </v-container>
+        <v-card>
+            <v-container fluid>
+                <div v-if="show_content">
+                    <slot></slot>
+                </div>
+            </v-container>
+        </v-card>
     </v-content>
 </template>
 
