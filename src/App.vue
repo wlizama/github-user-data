@@ -1,13 +1,23 @@
 <template>
     <v-app>
-        <InputSearch :input_props="input_props"/>
-        <BodyContainer :show_content="show_content">
-            <StatusRequest v-if="show_status_req" :status_req_props="status_req_props" />
-            <ResultContainer v-else>
-                <UserRow :user_row_props="user_data" />
-                <UserTabContent :user_tab_content_props="user_data" />
-            </ResultContainer>
-        </BodyContainer>
+        <v-container class="main-container">
+            <v-layout row wrap justify-center>
+                <v-flex sm12 lg8 xl6>
+
+
+                    <InputSearch :input_props="input_props" />
+                    <BodyContainer :show_content="show_content">
+                        <StatusRequest v-if="show_status_req" :status_req_props="status_req_props" />
+                        <ResultContainer v-else>
+                            <UserRow :user_row_props="user_data" />
+                            <UserTabContent :user_tab_content_props="user_data" />
+                        </ResultContainer>
+                    </BodyContainer>
+
+
+                </v-flex>
+            </v-layout>
+        </v-container>
     </v-app>
 </template>
 
@@ -85,13 +95,8 @@
 </script>
 
 <style>
-    .main {
-        min-height: 100%;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        max-width: 50em;
+    .main-container {
+        padding: 0;
+        margin-top: 0;
     }
 </style>

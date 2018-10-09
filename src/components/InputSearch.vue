@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar app color="cyan darken-3">
+    <v-toolbar color="cyan darken-3">
         <v-text-field
             v-model="input_props.username"
             @keyup.prevent.enter="input_props.doKeyup"
