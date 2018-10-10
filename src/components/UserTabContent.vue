@@ -2,49 +2,49 @@
     <section class="tab-contanier">
         <v-tabs color="light-blue darken-2" dark slider-color="cyan lighten-3">
             <v-tab>Overview</v-tab>
-            <v-tab @click="searchRepos">Repositories ({{ user_tab_content_props.public_repos }})</v-tab>
+            <v-tab>Repositories ({{ user_data.public_repos }})</v-tab>
             <v-tab-item>
                 <v-container>
                     <v-layout row class="row-item">
                         <v-flex xs4 class="font-weight-bold">ID:</v-flex>
                         <v-flex xs8>
-                            {{ user_tab_content_props.id }}
+                            {{ user_data.id }}
                         </v-flex>
                     </v-layout>
                     <v-layout row class="row-item">
                         <v-flex xs4 class="font-weight-bold">Company:</v-flex>
                         <v-flex xs8>
-                            {{ user_tab_content_props.company }}
+                            {{ user_data.company }}
                         </v-flex>
                     </v-layout>
                     <v-layout row class="row-item">
                         <v-flex xs4 class="font-weight-bold">e-mail:</v-flex>
                         <v-flex xs8>
-                            <a :href="'mailto:' + user_tab_content_props.email">{{ user_tab_content_props.email }}</a>
+                            <a :href="'mailto:' + user_data.email">{{ user_data.email }}</a>
                         </v-flex>
                     </v-layout>
                     <v-layout row class="row-item">
                         <v-flex xs4 class="font-weight-bold">Blog:</v-flex>
                         <v-flex xs8>
-                            <a :href="user_tab_content_props.blog">{{ user_tab_content_props.blog }}</a>
+                            <a :href="user_data.blog">{{ user_data.blog }}</a>
                         </v-flex>
                     </v-layout>
                     <v-layout row class="row-item">
                         <v-flex xs4 class="font-weight-bold">Location:</v-flex>
                         <v-flex xs8>
-                            {{ user_tab_content_props.location }}
+                            {{ user_data.location }}
                         </v-flex>
                     </v-layout>
                     <v-layout row class="row-item">
                         <v-flex xs4 class="font-weight-bold">Followers:</v-flex>
                         <v-flex xs8>
-                            {{ user_tab_content_props.followers }}
+                            {{ user_data.followers }}
                         </v-flex>
                     </v-layout>
                     <v-layout row class="row-item">
                         <v-flex xs4 class="font-weight-bold">Following:</v-flex>
                         <v-flex xs8>
-                            {{ user_tab_content_props.following }}
+                            {{ user_data.following }}
                         </v-flex>
                     </v-layout>
                 </v-container>
@@ -68,23 +68,7 @@
 
     export default {
         name : "userTabContent",
-        data () {
-            return {
-                user_repos : []
-            }
-        },
-        props : ["user_tab_content_props"],
-        methods : {
-            searchRepos() {
-                let username = this.user_tab_content_props.login
-                ghAPI.getUserRepos(username, (err, data) => {
-                    if (!err)
-                        this.user_repos = data;
-                    else
-                        this.user_repos = []
-                })
-            }
-        },
+        props : ["user_data", "user_repos"],
         components : {
             UserTabContentRepoWrap
         }

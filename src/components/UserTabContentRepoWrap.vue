@@ -1,6 +1,5 @@
 <template>
     <div>
-        
         <v-list-tile avatar :key="user_repo.id">
             <v-list-tile-avatar tile size="32">
                 <img :src="user_repo.fork ? gh_img_repo_forked : gh_img_repo">

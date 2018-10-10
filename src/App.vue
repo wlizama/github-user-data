@@ -10,7 +10,7 @@
                         <StatusRequest v-if="show_status_req" :status_req_props="status_req_props" />
                         <ResultContainer v-else>
                             <UserRow :user_row_props="user_data" />
-                            <UserTabContent :user_tab_content_props="user_data" />
+                            <UserTabContent :user_data="user_data" :user_repos="user_repos" />
                         </ResultContainer>
                     </BodyContainer>
 
@@ -43,7 +43,7 @@
             return {
                 input_props: {
                     username : "",
-                    doKeyup: this.searchUser,
+                    doKeyup: this.searchUserData,
                     doClickClose : this.clearSearch
                 },
                 status_req_props : {
@@ -52,10 +52,11 @@
                 show_status_req: false,
                 show_content: false,
                 user_data: {},
+                user_repos: []
             }
         },
         methods : {
-            searchUser() {
+            searchUserData() {
                 let username = this.input_props.username.trim()
 
                 if(username !== "") {
@@ -66,10 +67,19 @@
                     ghAPI.getUser(username, (err, data) => {
                         if (!err){
                             this.user_data = data;
-                            this.show_status_req = false
+
+                            ghAPI.getUserRepos(username, (err, data) => {
+                                if (!err)
+                                    this.user_repos = data;
+                                else
+                                    this.user_repos = []
+                                
+                                this.show_status_req = false
+                            })
                         }
                         else {
                             this.user_data = {}
+                            this.user_repos = []
                             this.show_status_req = true
                             this.status_req_props.type = "error"
                         }
