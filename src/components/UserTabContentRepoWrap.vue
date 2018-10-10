@@ -1,23 +1,26 @@
 <template>
     <div>
-        <v-list-tile-avatar>
-            <img :src="user_repo.fork ? gh_img_repo_forked : gh_img_repo">
-        </v-list-tile-avatar>
         
-        <div class="repo-title">
-            <span class="repo-title--label">
-                <a :href="user_repo.html_url">
-                    {{ user_repo.full_name.split("/")[0] }}/<b>{{ user_repo.full_name.split("/")[1] }}</b>
-                </a>
-            </span>
-            <span class="repo-title--star-count">
-                <v-icon>star_rate</v-icon>
-                <span class="stargazers-count">{{ user_repo.stargazers_count }}</span>
-            </span>
-        </div>
-        <div>{{ user_repo.description }}</div>
-        <div class="repo-lang">{{ user_repo.language }}</div>
+        <v-list-tile avatar :key="user_repo.id">
+            <v-list-tile-avatar tile size="32">
+                <img :src="user_repo.fork ? gh_img_repo_forked : gh_img_repo">
+            </v-list-tile-avatar>
 
+            <v-list-tile-content>
+                <v-list-tile-title v-html="full_name_title"></v-list-tile-title>
+                <v-list-tile-sub-title v-html="user_repo.description" class="text--primary"></v-list-tile-sub-title>
+                <v-list-tile-sub-title v-html="user_repo.language"></v-list-tile-sub-title>
+            </v-list-tile-content>
+
+            <v-list-tile-action>
+                <v-list-tile-action-text>
+                    <v-icon>star</v-icon>
+                    {{ user_repo.stargazers_count }}
+                </v-list-tile-action-text>
+                
+            </v-list-tile-action>
+        </v-list-tile>
+        <v-divider></v-divider>
     </div>
 </template>
 
@@ -27,13 +30,19 @@
 
     export default {
         name: "UserTabContentRepoWrap",
+        props : ["user_repo"],
         data() {
             return {
                 gh_img_repo,
                 gh_img_repo_forked
             }
         },
-        props : ["user_repo"]
+        computed : {
+            full_name_title () {
+                let full_name = this.user_repo.full_name.split("/")
+                return `<a href='${this.user_repo.html_url}'>${full_name[0]}/<b>${full_name[1]}</b>`
+            }
+        }
     }
 </script>
 

@@ -50,7 +50,7 @@
                 </v-container>
             </v-tab-item>
             <v-tab-item>
-                <v-list three-line>
+                <v-list two-line>
                     <UserTabContentRepoWrap 
                         v-for="user_repo in user_repos"
                         :key="user_repo.id"
