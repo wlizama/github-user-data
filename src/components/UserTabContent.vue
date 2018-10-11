@@ -50,13 +50,18 @@
                 </v-container>
             </v-tab-item>
             <v-tab-item>
-                <v-list two-line>
+                <v-list two-line v-if="user_repos.length">
                     <UserTabContentRepoWrap 
                         v-for="user_repo in user_repos"
                         :key="user_repo.id"
                         :user_repo="user_repo">
                     </UserTabContentRepoWrap>
                 </v-list>
+                <v-card v-else>
+                    <v-card-text>
+                        <p class="text-xs-center title">No repositories found</p>
+                    </v-card-text>
+                </v-card>
             </v-tab-item>
         </v-tabs>
     </section>
