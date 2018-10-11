@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+    <v-app class="my-bg">
         <v-container class="main-container">
             <v-layout row wrap justify-center>
                 <v-flex sm12 lg8 xl6>
@@ -23,7 +23,7 @@
 
 <script>
     //# CSS imports
-    import "./assets/styles/common.css"
+    // import "./assets/styles/common.css"
 
     //# JS imports
     import ghAPI from "./api"
@@ -105,8 +105,35 @@
 </script>
 
 <style>
+    .my-bg {
+        background-image: url(./assets/images/github.png), url(./assets/images/textura_ln1.png) !important;
+        background-repeat: no-repeat, repeat !important;
+        background-position: center, left top !important;
+        background-attachment: fixed, fixed !important;
+        background-size: 15%, auto !important;
+    }
     .main-container {
         padding: 0;
         margin-top: 0;
+    }
+    @media screen and (max-width: 1400px) {
+        .my-bg {
+            background-size: 15%, auto !important;
+        }
+    }
+    @media screen and (max-width: 1200px) {
+        .my-bg {
+            background-size: 20%, auto !important;
+        }
+    }
+    @media screen and (max-width: 900px) {
+        .my-bg {
+            background-size: 25%, auto !important;
+        }
+    }
+    @media screen and (max-width: 720px) {
+        .my-bg {
+            background-size: 35%, auto !important;
+        }
     }
 </style>
