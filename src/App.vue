@@ -3,8 +3,6 @@
         <v-container class="main-container">
             <v-layout row wrap justify-center>
                 <v-flex sm12 lg8 xl6>
-
-
                     <InputSearch :input_props="input_props" />
                     <BodyContainer :show_content="show_content">
                         <StatusRequest v-if="show_status_req" :status_req_props="status_req_props" />
@@ -13,8 +11,6 @@
                             <UserTabContent :user_data="user_data" :user_repos="user_repos" />
                         </ResultContainer>
                     </BodyContainer>
-
-
                 </v-flex>
             </v-layout>
         </v-container>
@@ -22,8 +18,6 @@
 </template>
 
 <script>
-    //# CSS imports
-    // import "./assets/styles/common.css"
 
     //# JS imports
     import ghAPI from "./api"

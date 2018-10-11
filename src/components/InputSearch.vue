@@ -11,8 +11,7 @@
             hide-details
             flat
             clearable
-            solo
-            >
+            solo>
         </v-text-field>
   </v-toolbar>
 </template>

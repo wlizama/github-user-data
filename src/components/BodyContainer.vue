@@ -1,10 +1,8 @@
 <template>
     <v-content>
         <v-card flat class="transparent">
-            <v-container fluid>
-                <div v-if="show_content">
-                    <slot></slot>
-                </div>
+            <v-container fluid v-if="show_content">
+                <slot></slot>
             </v-container>
         </v-card>
     </v-content>
