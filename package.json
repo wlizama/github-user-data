@@ -19,9 +19,8 @@
     "homepage": "https://github.com/wlizama/github-user-data#readme",
     "dependencies": {
         "axios": "^0.18.0",
-        "material-design-icons": "^3.0.1",
-        "materialize-css": "^1.0.0",
-        "vue": "^2.5.17"
+        "vue": "^2.5.17",
+        "vuetify": "^1.2.6"
     },
     "devDependencies": {
         "@babel/core": "^7.1.2",
@@ -31,6 +30,7 @@
         "css-loader": "^1.0.0",
         "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "file-loader": "^2.0.0",
+        "material-design-icons-iconfont": "^3.0.3",
         "optimize-css-assets-webpack-plugin": "^5.0.1",
         "vue-loader": "^15.4.2",
         "vue-template-compiler": "^2.5.17",

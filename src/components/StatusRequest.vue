@@ -1,20 +1,14 @@
 <template>
-    <div>
+    <section>
         <div v-if="status_req_props.type === 'loading'">
-            <div class="status-request">
-                <span>Please wait...</span>
-                <div class="progress">
-                    <div class="indeterminate"></div>
-                </div>
-            </div>
+            <span>Please wait...</span>
+            <v-progress-linear :indeterminate="true"></v-progress-linear>
         </div>
-        <div v-if="status_req_props.type === 'error'">
-            <div class="status-fail flow-text">
-                <h1>404</h1>
-                <p>User not found</p>
-            </div>
+        <div v-if="status_req_props.type === 'error'" class="text-md-center">
+            <h1 class="display-3">404</h1>
+            <p class="title">User not found</p>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -25,12 +19,5 @@
 </script>
 
 <style>
-    .status-fail {
-        text-align: center;
-        font-size: 1.2em;
-    }
-    .status-fail > h1 {
-        font-size: 5em;
-        font-weight: bold;
-    }
+
 </style>

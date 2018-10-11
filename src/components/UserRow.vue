@@ -1,34 +1,31 @@
 <template>
-    <div class="row">
-        <div class="col s5 m3 l3">
-            <div class="card">
-                <div class="card-image">
-                    <img :src="user_row_props.avatar_url">
+    <v-layout align-center row fill-height>
+        <v-avatar tile size="240px">
+            <v-img :src="user_row_props.avatar_url"  contain></v-img>
+        </v-avatar>
+        <v-flex>
+            <v-card-title primary-title>
+                <div>
+                    <div class="headline">{{ user_row_props.name }}</div>
+                    <div>
+                        <a :href="user_row_props.html_url" class="user-url">@{{ user_row_props.login }}</a>
+                    </div>
+                    <div>{{ user_row_props.bio ? user_row_props.bio : "" }}</div>
                 </div>
-            </div>
-        </div>
-        <div class="col s7 m9 l9">
-            <h1 class="flow-text main-text-1">{{ user_row_props.name }}</h1>
-            <span class="flow-text">
-                <a :href="user_row_props.html_url">@{{ user_row_props.login }}</a>
-            </span>
-        </div>
-
-        <div class="col s12 m12 l12">
-            <div class="flow-text">
-                {{ user_row_props.bio ? user_row_props.bio : "" }}
-            </div>
-        </div>
-    </div>
+            </v-card-title>
+        </v-flex>
+    </v-layout>
 </template>
 
 <script>
     export default {
-        name : "userRow",
-        props : ["user_row_props"]
+        name: "userRow",
+        props: ["user_row_props"]
     }
 </script>
 
 <style>
-
+    .user-url {
+        text-decoration: none
+    }
 </style>
