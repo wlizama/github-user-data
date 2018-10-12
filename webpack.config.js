@@ -10,7 +10,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].js', // .[hash:8]
-        // publicPath: "dist/",
+        publicPath: '/dist/',
     },
     module: {
         rules: [
@@ -33,8 +33,10 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             minimize: true,
+                            sourceMap: true
                         }
-                    }]
+                    }],
+                    publicPath: "../"
                 })
             },
             {
