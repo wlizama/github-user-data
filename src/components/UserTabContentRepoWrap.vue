@@ -2,7 +2,7 @@
     <div>
         <v-list-tile avatar :key="user_repo.id">
             <v-list-tile-avatar tile size="32">
-                <img :src="user_repo.fork ? gh_img_repo_forked : gh_img_repo">
+                <img :src="img_avatar">
             </v-list-tile-avatar>
 
             <v-list-tile-content>
@@ -24,22 +24,17 @@
 </template>
 
 <script>
-    import gh_img_repo from "../assets/images/github_repo.png"
-    import gh_img_repo_forked from "../assets/images/github_repo-forked.png"
 
     export default {
         name: "UserTabContentRepoWrap",
         props : ["user_repo"],
-        data() {
-            return {
-                gh_img_repo,
-                gh_img_repo_forked
-            }
-        },
         computed : {
             full_name_title () {
                 let full_name = this.user_repo.full_name.split("/")
                 return `<a href='${this.user_repo.html_url}'>${full_name[0]}/<b>${full_name[1]}</b>`
+            },
+            img_avatar() {
+                return this.user_repo.fork ? require('ImgAssets/github_repo-forked.png') : require('ImgAssets/github_repo.png')
             }
         }
     }

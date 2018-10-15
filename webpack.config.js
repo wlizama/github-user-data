@@ -10,7 +10,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name].js', // .[hash:8]
-        // publicPath: "dist/",
+        publicPath: './dist/',
     },
     module: {
         rules: [
@@ -33,8 +33,10 @@ module.exports = {
                         loader: 'css-loader',
                         options: {
                             minimize: true,
+                            sourceMap: true
                         }
-                    }]
+                    }],
+                    publicPath: "../"
                 })
             },
             {
@@ -63,9 +65,18 @@ module.exports = {
     performance: {
         hints: false
     },
+    resolve: {
+        alias: {
+            ImgAssets: path.resolve(__dirname, 'src/assets/images/'),
+        }
+    },
     plugins: [
         new VueLoaderPlugin(),
-        new ExtractTextPlugin("css/[name].css"), // .[hash:8].min
+        new ExtractTextPlugin({
+            filename: "css/[name].css",
+            // disable: false,
+            // allChunks: true
+        }), // .[hash:8].min
         new OptimizeCssAssetsPlugin({
             cssProcessorPluginOptions: {
                 preset: ['default', { discardComments: { removeAll: true } }],
