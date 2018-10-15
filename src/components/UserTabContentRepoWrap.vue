@@ -34,7 +34,7 @@
                 return `<a href='${this.user_repo.html_url}'>${full_name[0]}/<b>${full_name[1]}</b>`
             },
             img_avatar() {
-                return this.user_repo.fork ? require('ImgAssets/github_repo.png') : require('ImgAssets/github_repo-forked.png')
+                return this.user_repo.fork ? require('ImgAssets/github_repo-forked.png') : require('ImgAssets/github_repo.png')
             }
         }
     }
