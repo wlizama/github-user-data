@@ -58,6 +58,11 @@ module.exports = {
     devServer: {
         port: 3179
     },
+    resolve: {
+        alias: {
+            ImgAssets: path.resolve(__dirname, 'src/assets/images/'),
+        }
+    },
     mode: 'development',
     plugins: [
         new VueLoaderPlugin(),

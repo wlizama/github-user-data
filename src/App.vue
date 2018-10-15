@@ -1,24 +1,25 @@
 <template>
-    <section class="main">
-        <InputSearch :input_props="input_props"/>
-        <BodyContainer :show_content="show_content">
-            <StatusRequest v-if="show_status_req" :status_req_props="status_req_props" />
-            <ResultContainer v-else>
-                <UserRow :user_row_props="user_data" />
-                <UserTabContent :user_tab_content_props="user_data" />
-            </ResultContainer>
-        </BodyContainer>
-    </section>
+    <v-app class="my-bg">
+        <v-container class="main-container">
+            <v-layout row wrap justify-center>
+                <v-flex sm12 lg8 xl6>
+                    <InputSearch :input_props="input_props" />
+                    <BodyContainer :show_content="show_content">
+                        <StatusRequest v-if="show_status_req" :status_req_props="status_req_props" />
+                        <ResultContainer v-else>
+                            <UserRow :user_row_props="user_data" />
+                            <UserTabContent :user_data="user_data" :user_repos="user_repos" />
+                        </ResultContainer>
+                    </BodyContainer>
+                </v-flex>
+            </v-layout>
+        </v-container>
+    </v-app>
 </template>
 
 <script>
-    //# CSS imports
-    import "./assets/styles/common.css"
-    import 'materialize-css/dist/css/materialize.min.css';
 
     //# JS imports
-    // import "jquery"
-    // import "materialize-css"
     import ghAPI from "./api"
 
     //# Components imports
@@ -36,7 +37,7 @@
             return {
                 input_props: {
                     username : "",
-                    doKeyup: this.searchUser,
+                    doKeyup: this.searchUserData,
                     doClickClose : this.clearSearch
                 },
                 status_req_props : {
@@ -45,10 +46,11 @@
                 show_status_req: false,
                 show_content: false,
                 user_data: {},
+                user_repos: []
             }
         },
         methods : {
-            searchUser() {
+            searchUserData() {
                 let username = this.input_props.username.trim()
 
                 if(username !== "") {
@@ -59,10 +61,19 @@
                     ghAPI.getUser(username, (err, data) => {
                         if (!err){
                             this.user_data = data;
-                            this.show_status_req = false
+
+                            ghAPI.getUserRepos(username, (err, data) => {
+                                if (!err)
+                                    this.user_repos = data;
+                                else
+                                    this.user_repos = []
+                                
+                                this.show_status_req = false
+                            })
                         }
                         else {
                             this.user_data = {}
+                            this.user_repos = []
                             this.show_status_req = true
                             this.status_req_props.type = "error"
                         }
@@ -88,13 +99,35 @@
 </script>
 
 <style>
-    .main {
-        min-height: 100%;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: relative;
-        max-width: 50em;
+    .my-bg {
+        background-image: url(~ImgAssets/github.png), url(~ImgAssets/textura_ln1.png) !important;
+        background-repeat: no-repeat, repeat !important;
+        background-position: center, left top !important;
+        background-attachment: fixed, fixed !important;
+        background-size: 15%, auto !important;
+    }
+    .main-container {
+        padding: 0;
+        margin-top: 0;
+    }
+    @media screen and (max-width: 1400px) {
+        .my-bg {
+            background-size: 15%, auto !important;
+        }
+    }
+    @media screen and (max-width: 1200px) {
+        .my-bg {
+            background-size: 20%, auto !important;
+        }
+    }
+    @media screen and (max-width: 900px) {
+        .my-bg {
+            background-size: 25%, auto !important;
+        }
+    }
+    @media screen and (max-width: 720px) {
+        .my-bg {
+            background-size: 35%, auto !important;
+        }
     }
 </style>
