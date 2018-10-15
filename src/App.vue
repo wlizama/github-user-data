@@ -100,7 +100,7 @@
 
 <style>
     .my-bg {
-        background-image: url(./assets/images/github.png), url(./assets/images/textura_ln1.png) !important;
+        background-image: url(~ImgAssets/github.png), url(~ImgAssets/textura_ln1.png) !important;
         background-repeat: no-repeat, repeat !important;
         background-position: center, left top !important;
         background-attachment: fixed, fixed !important;
