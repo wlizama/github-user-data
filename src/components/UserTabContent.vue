@@ -56,6 +56,12 @@
                         :key="user_repo.id"
                         :user_repo="user_repo">
                     </UserTabContentRepoWrap>
+                    <div class="text-xs-center">
+                        <v-pagination
+                            v-model="page"
+                            >
+                        </v-pagination>
+                    </div>
                 </v-list>
                 <v-card v-else>
                     <v-card-text>
@@ -68,12 +74,16 @@
 </template>
 
 <script>
-    import ghAPI from "../api"
     import UserTabContentRepoWrap from "./UserTabContentRepoWrap.vue"
 
     export default {
         name : "userTabContent",
         props : ["user_data", "user_repos"],
+        data () {
+            return  {
+                page: 1
+            }
+        },
         components : {
             UserTabContentRepoWrap
         }

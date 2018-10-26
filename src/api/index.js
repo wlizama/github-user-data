@@ -1,5 +1,6 @@
-const API_URL = "https://api.github.com"
 const axios = require("axios")
+const API_URL = "https://api.github.com"
+const MAX_REPOS = 30
 
 let ghAPI = {}
 
@@ -17,7 +18,7 @@ ghAPI.getUser = function (username, callback) {
 
 
 ghAPI.getUserRepos = function (username, callback) {
-    axios.get(`${API_URL}/users/${username}/repos`)
+    axios.get(`${API_URL}/users/${username}/repos?per_page=${MAX_REPOS}`)
         .then(resp => callback(null, resp.data))
         .catch(err => callback(err))
 }
