@@ -1,6 +1,7 @@
 const axios = require("axios")
 const API_URL = "https://api.github.com"
-const MAX_REPOS = 30
+const MAX_REPOS_X_PAGE = 30
+const DEFAULT_PAGE = 1
 
 let ghAPI = {}
 
@@ -18,9 +19,19 @@ ghAPI.getUser = function (username, callback) {
 
 
 ghAPI.getUserRepos = function (username, callback) {
-    axios.get(`${API_URL}/users/${username}/repos?per_page=${MAX_REPOS}`)
+    axios.get(`${API_URL}/users/${username}/repos?per_page=${MAX_REPOS_X_PAGE}`)
         .then(resp => callback(null, resp.data))
         .catch(err => callback(err))
 }
+
+
+ghAPI.getUserReposByPage = function (username, page, callback) {
+    axios.get(`${API_URL}/users/${username}/repos?per_page=${MAX_REPOS_X_PAGE}&page=${page}`)
+        .then(resp => callback(null, resp.data))
+        .catch(err => callback(err))
+}
+
+ghAPI.MAX_REPOS_X_PAGE = MAX_REPOS_X_PAGE
+ghAPI.DEFAULT_PAGE = DEFAULT_PAGE
 
 export default ghAPI

@@ -50,18 +50,16 @@
                 </v-container>
             </v-tab-item>
             <v-tab-item>
-                <v-list two-line v-if="user_repos.length">
+                <v-list two-line v-if="user_data.public_repos" >
                     <UserTabContentRepoWrap 
                         v-for="user_repo in user_repos"
                         :key="user_repo.id"
                         :user_repo="user_repo">
                     </UserTabContentRepoWrap>
-                    <div class="text-xs-center">
-                        <v-pagination
-                            v-model="page"
-                            >
-                        </v-pagination>
-                    </div>
+                    <UserTabContentReposPages
+                        :repos_length="user_data.public_repos"
+                        >
+                    </UserTabContentReposPages>
                 </v-list>
                 <v-card v-else>
                     <v-card-text>
@@ -74,18 +72,40 @@
 </template>
 
 <script>
+    import ghAPI from "../api/index.js";
+
     import UserTabContentRepoWrap from "./UserTabContentRepoWrap.vue"
+    import UserTabContentReposPages from "./userTabContentReposPages.vue"
 
     export default {
         name : "userTabContent",
         props : ["user_data", "user_repos"],
-        data () {
-            return  {
-                page: 1
-            }
-        },
         components : {
-            UserTabContentRepoWrap
+            UserTabContentRepoWrap,
+            UserTabContentReposPages
+        },
+        methods : {
+            // search_repos_by_page (page) {
+            //     console.log("here", page, this);
+            //     ghAPI.getUserReposByPage(this.user_data.login, page, (err, data) => {
+            //         if (!err)
+            //             this.repos_data = data;
+            //         else
+            //             this.repos_data = []
+            //         console.log(this.repos_data);
+                    
+            //     })
+            // }
+        },
+        computed: {
+            // repos_data : {
+            //     get () {
+            //         return this.user_repos
+            //     },
+            //     set (new_data) {
+            //         this.user_repos = new_data
+            //     }
+            // }
         }
     }
 </script>

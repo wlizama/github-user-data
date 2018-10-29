@@ -8,7 +8,7 @@
                         <StatusRequest v-if="show_status_req" :status_req_props="status_req_props" />
                         <ResultContainer v-else>
                             <UserRow :user_row_props="user_data" />
-                            <UserTabContent :user_data="user_data" :user_repos="user_repos" />
+                            <UserTabContent :user_data="user_data" :user_repos="user_repos" @search_repos_by_page="search_repos_by_page"/>
                         </ResultContainer>
                     </BodyContainer>
                 </v-flex>
@@ -62,7 +62,7 @@
                         if (!err){
                             this.user_data = data;
 
-                            ghAPI.getUserRepos(username, (err, data) => {
+                            ghAPI.getUserReposByPage(username, ghAPI.DEFAULT_PAGE, (err, data) => {
                                 if (!err)
                                     this.user_repos = data;
                                 else
@@ -85,6 +85,17 @@
                 this.show_content = false
                 this.input_props.username = ""
                 this.user_data = {}
+            },
+            search_repos_by_page (page) {
+                console.log("here", page, this);
+                ghAPI.getUserReposByPage(this.username, page, (err, data) => {
+                    if (!err)
+                        this.user_repos = data;
+                    else
+                        this.user_repos = []
+                    console.log(this.user_repos);
+                    
+                })
             }
         },
         components : {
