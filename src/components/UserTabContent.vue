@@ -58,6 +58,7 @@
                     </UserTabContentRepoWrap>
                     <UserTabContentReposPages
                         :repos_length="user_data.public_repos"
+                        @search_repos_by_page="search_repos_by_page"
                         >
                     </UserTabContentReposPages>
                 </v-list>
@@ -85,17 +86,17 @@
             UserTabContentReposPages
         },
         methods : {
-            // search_repos_by_page (page) {
-            //     console.log("here", page, this);
-            //     ghAPI.getUserReposByPage(this.user_data.login, page, (err, data) => {
-            //         if (!err)
-            //             this.repos_data = data;
-            //         else
-            //             this.repos_data = []
-            //         console.log(this.repos_data);
+            search_repos_by_page (page) {
+                console.log("here", page, this);
+                ghAPI.getUserReposByPage(this.user_data.login, page, (err, data) => {
+                    if (!err)
+                        this.user_repos = data;
+                    else
+                        this.user_repos = []
+                    console.log(this.repos_data);
                     
-            //     })
-            // }
+                })
+            }
         },
         computed: {
             // repos_data : {
