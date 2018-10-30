@@ -1,5 +1,5 @@
 <template>
-    <div class="text-xs-center" v-if="show_pagination">
+    <div class="text-xs-center pag-padding" v-if="show_pagination">
         <v-pagination
             v-model="page"
             :length="cant_paginas"
@@ -37,5 +37,7 @@
 </script>
 
 <style>
-
+    .pag-padding {
+        padding-top: 1em
+    }
 </style>

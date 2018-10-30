@@ -52,7 +52,7 @@
             <v-tab-item>
                 <v-list two-line v-if="user_data.public_repos" >
                     <UserTabContentRepoWrap 
-                        v-for="user_repo in user_repos"
+                        v-for="user_repo in repositories"
                         :key="user_repo.id"
                         :user_repo="user_repo">
                     </UserTabContentRepoWrap>
@@ -81,32 +81,27 @@
     export default {
         name : "userTabContent",
         props : ["user_data", "user_repos"],
+        data() {
+            return {
+                repositories : []
+            }
+        },
         components : {
             UserTabContentRepoWrap,
             UserTabContentReposPages
         },
+        created () {
+            this.repositories = this.user_repos
+        },
         methods : {
             search_repos_by_page (page) {
-                console.log("here", page, this);
                 ghAPI.getUserReposByPage(this.user_data.login, page, (err, data) => {
                     if (!err)
-                        this.user_repos = data;
+                        this.repositories = data;
                     else
-                        this.user_repos = []
-                    console.log(this.repos_data);
-                    
+                        this.repositories = []
                 })
             }
-        },
-        computed: {
-            // repos_data : {
-            //     get () {
-            //         return this.user_repos
-            //     },
-            //     set (new_data) {
-            //         this.user_repos = new_data
-            //     }
-            // }
         }
     }
 </script>
