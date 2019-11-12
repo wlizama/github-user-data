@@ -18,7 +18,7 @@
     },
     "homepage": "https://github.com/wlizama/github-user-data#readme",
     "dependencies": {
-        "axios": "^0.18.0",
+        "axios": "^0.18.1",
         "vue": "^2.5.17",
         "vuetify": "^1.2.6"
     },
